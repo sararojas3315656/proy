@@ -1,0 +1,38 @@
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th><th>Ciudad</th><th>Zona</th><th>Servicio</th>
+      <th>Nivel</th><th>Estado</th><th>Descripción</th><th>Responsable</th>
+      <% if (acciones) { %><th>Acciones</th><% } %>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (alertas.length === 0) { %>
+      <tr><td colspan="9">Sin alertas para mostrar.</td></tr>
+    <% } %>
+    <% alertas.forEach(function (a) { %>
+      <tr>
+        <td><%= a.fecha %></td>
+        <td><%= a.ciudad %></td>
+        <td><%= a.zona %></td>
+        <td><%= a.servicio %></td>
+        <td><span class="badge nivel-<%= a.nivel %>"><%= a.nivel %></span></td>
+        <td><span class="badge"><%= a.estado %></span></td>
+        <td><%= a.descripcion %></td>
+        <td><%= a.responsable || 'Sistema' %></td>
+        <% if (acciones) { %>
+          <td>
+            <form method="post" action="/alertas/<%= a.id %>/estado" class="mini">
+              <select name="estado">
+                <option value="abierta" <%= a.estado === 'abierta' ? 'selected' : '' %>>abierta</option>
+                <option value="en_proceso" <%= a.estado === 'en_proceso' ? 'selected' : '' %>>en_proceso</option>
+                <option value="cerrada" <%= a.estado === 'cerrada' ? 'selected' : '' %>>cerrada</option>
+              </select>
+              <button class="btn btn-sm">Actualizar</button>
+            </form>
+          </td>
+        <% } %>
+      </tr>
+    <% }); %>
+  </tbody>
+</table> 

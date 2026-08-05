@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= titulo %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="auth">
+  <div class="auth-box">
+    <h1>Crear cuenta</h1>
+    <p>Registro de nuevos actores en la plataforma</p>
+
+    <% if (error) { %><div class="error"><%= error %></div><% } %>
+
+    <form method="post" action="/registro">
+      <label>Nombre completo</label>
+      <input type="text" name="nombre" value="<%= valores.nombre || '' %>" required>
+
+      <label>Correo electrónico</label>
+      <input type="email" name="correo" value="<%= valores.correo || '' %>" required>
+
+      <label>Contraseña</label>
+      <input type="password" name="contraseña" required>
+
+      <label>Rol</label>
+      <select name="rol" required>
+        <option value="">Selecciona un rol</option>
+        <option value="ciudadano" <%= valores.rol === 'ciudadano' ? 'selected' : '' %>>Ciudadano</option>
+        <option value="empresa" <%= valores.rol === 'empresa' ? 'selected' : '' %>>Empresa</option>
+        <option value="autoridad" <%= valores.rol === 'autoridad' ? 'selected' : '' %>>Autoridad</option>
+        <option value="organizacion" <%= valores.rol === 'organizacion' ? 'selected' : '' %>>Organización internacional</option>
+      </select>
+
+      <label>Ciudad</label>
+      <select name="ciudad_id" required>
+        <option value="">Selecciona tu ciudad</option>
+        <% ciudades.forEach(function (c) { %>
+          <option value="<%= c.id %>" <%= String(valores.ciudad_id) === String(c.id) ? 'selected' : '' %>> <%= c.nombre %></option>
+        <% }); %>
+      </select>
+
+      <label>Servicio (solo empresas)</label>
+      <select name="servicio_id">
+        <option value="">No aplica</option>
+        <% servicios.forEach(function (s) { %>
+          <option value="<%= s.id %>" <%= String(valores.servicio_id) === String(s.id) ? 'selected' : '' %>> <%= s.nombre %></option>
+        <% }); %>
+      </select>
+
+      <button class="btn">Crear cuenta</button>
+    </form>
+
+    <p class="link">¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
+  </div>
+</body>
+</html> 
