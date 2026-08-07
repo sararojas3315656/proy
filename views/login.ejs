@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title><%= titulo %></title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css?v=41">
 </head>
 <body class="auth rol-<%= rol || 'default' %>">
+  <%- include('partials/mascota', { rol: rol || '' }) %>
   <div class="auth-box">
     <div class="auth-head">
       <h1>SGCI</h1>
@@ -55,9 +56,25 @@
       var form = document.getElementById('loginForm');
       var rolInput = document.getElementById('rolInput');
       var aviso = document.getElementById('rolAviso');
+      var correoCampo = document.getElementById('correo');
+      var passCampo = document.getElementById('contraseña');
       var cards = Array.prototype.slice.call(document.querySelectorAll('.rol-card'));
 
+      var guardados = {};
+      var rolActual = null;
+
+      function guardarActual() {
+        if (rolActual) {
+          guardados[rolActual] = {
+            correo: correoCampo ? correoCampo.value : '',
+            pass: passCampo ? passCampo.value : ''
+          };
+        }
+      }
+
       function aplicar(rol) {
+        guardarActual();
+        rolActual = rol;
         document.body.className = 'auth rol-' + (rol || 'default');
         cards.forEach(function (card) {
           card.classList.toggle('activo', card.getAttribute('data-rol') === rol);
@@ -65,13 +82,15 @@
 
         if (rol) {
           rolInput.value = rol;
+          var datos = guardados[rol] || { correo: '', pass: '' };
+          if (correoCampo && correoCampo.value !== datos.correo) correoCampo.value = datos.correo;
+          if (passCampo && passCampo.value !== datos.pass) passCampo.value = datos.pass;
           form.classList.remove('oculto');
           aviso.classList.add('oculto');
           form.classList.remove('mostrar');
           void form.offsetWidth;
           form.classList.add('mostrar');
-          var campo = document.getElementById('correo');
-          if (campo) campo.focus();
+          if (correoCampo) correoCampo.focus();
         } else {
           rolInput.value = '';
           form.classList.add('oculto');
@@ -85,8 +104,14 @@
         });
       });
 
-      if (rolInput.value) aplicar(rolInput.value);
+      if (rolInput.value) {
+        if (correoCampo && correoCampo.value) {
+          guardados[rolInput.value] = { correo: correoCampo.value, pass: '' };
+        }
+        aplicar(rolInput.value);
+      }
     })();
   </script>
+  <script src="/js/mascota.js?v=7"></script>
 </body>
 </html>

@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title><%= titulo %></title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css?v=41">
 </head>
 <body class="auth">
+  <%- include('partials/mascota') %>
   <div class="auth-box">
     <h1>Crear cuenta</h1>
     <p>Registro de nuevos actores en la plataforma</p>
@@ -52,5 +53,6 @@
 
     <p class="link">¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
   </div>
+  <script src="/js/mascota.js?v=7"></script>
 </body>
 </html> 

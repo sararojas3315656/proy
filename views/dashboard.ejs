@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title><%= titulo %></title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css?v=41">
 </head>
 <body class="panel rol-<%= usuario.rol %>">
   <%- include('partials/navbar') %>
+  <%- include('partials/mascota', { rol: usuario.rol }) %>
 
   <main>
     <h1><%= rolLabel %></h1>
@@ -317,5 +318,6 @@
     <% } %>
 
   </main>
+  <script src="/js/mascota.js?v=7"></script>
 </body>
 </html> 
