@@ -42,8 +42,8 @@ input, select, textarea { padding: 12px 14px; border: 1px solid #c6cdd6; border-
 body.auth { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
 .auth-box { background: #fff; padding: 30px; border-radius: 12px; width: 380px; box-shadow: 0 4px 18px rgba(0,0,0,.12); }
 .auth-box h1 { text-align: center; margin: 0; }
-.auth-box p { text-align: center; color: #666; }
-.auth-box label { display: block; margin: 10px 0 4px; font-weight: 600; font-size: 14px; }
+.auth-box p { text-align: center; color: #475569; font-size: 16px; }
+.auth-box label { display: block; margin: 14px 0 6px; font-weight: 700; font-size: 16px; color: var(--accent-dark, #1e293b); letter-spacing: .3px; }
 .auth-box .btn { width: 100%; margin-top: 14px; }
 .link { text-align: center; }
 .link a {
@@ -134,9 +134,9 @@ body.auth::before {
   font-size: 38px;
   transition: color .5s ease;
 }
-.auth-head p { margin: 12px 0 0; color: #64748b; font-size: 16px; }
+.auth-head p { margin: 12px 0 0; color: var(--accent-dark, #334155); font-size: 17px; font-weight: 700; letter-spacing: .4px; }
 
-.rol-aviso { margin: 30px 0 16px; text-align: center; color: #94a3b8; font-size: 16px; }
+.rol-aviso { margin: 30px 0 16px; text-align: center; color: #475569; font-size: 17px; font-weight: 600; }
 .rol-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .rol-card {
   border: 2px solid #e2e8f0;
@@ -158,13 +158,13 @@ body.auth::before {
 .rol-card:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 14px 26px rgba(2, 6, 23, .14); }
 .rol-card .rol-emoji { width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; transition: transform .3s ease; }
 .rol-card:hover .rol-emoji { transform: translateY(-2px); }
-.rol-card .rol-emoji svg { width: 36px; height: 36px; color: #94a3b8; transition: color .25s ease, transform .3s ease; }
+.rol-card .rol-emoji svg { width: 36px; height: 36px; color: #64748b; transition: color .25s ease, transform .3s ease; }
 .rol-card:hover .rol-emoji svg { transform: scale(1.15); }
 .rol-card[data-rol="ciudadano"]:hover svg { color: #f97316; }
 .rol-card[data-rol="empresa"]:hover svg { color: #2563eb; }
 .rol-card[data-rol="autoridad"]:hover svg { color: #16a34a; }
 .rol-card[data-rol="organizacion"]:hover svg { color: #7c3aed; }
-.rol-card .rol-nombre { font-size: 15.5px; color: #475569; font-weight: 700; letter-spacing: .2px; transition: color .25s ease, transform .25s ease; }
+.rol-card .rol-nombre { font-size: 16px; color: #334155; font-weight: 600; letter-spacing: .2px; transition: color .25s ease, transform .25s ease; }
 .rol-card:hover .rol-nombre { color: var(--accent-dark); }
 .rol-card[data-rol="ciudadano"]:hover { border-color: #f97316; }
 .rol-card[data-rol="empresa"]:hover { border-color: #2563eb; }
@@ -182,7 +182,7 @@ body.auth::before {
 .login-form { margin-top: 26px; }
 .login-form.oculto, .rol-aviso.oculto { display: none; }
 .login-form.mostrar { animation: aparecer .45s ease both; }
-.login-form label { display: block; margin: 16px 0 6px; font-weight: 600; font-size: 15px; color: #334155; }
+.login-form label { display: block; margin: 16px 0 6px; font-weight: 700; font-size: 16px; color: var(--accent-dark, #334155); letter-spacing: .3px; }
 .login-form input { transition: border-color .25s ease, box-shadow .25s ease; padding: 13px; font-size: 16px; }
 .login-form input:focus {
   border-color: var(--accent) !important;
